@@ -286,7 +286,7 @@
 
   <!-- BOUTON CTA -->
   <div class="fc-cta-wrapper">
-    <a href="https://www.yakineouss.com/bd373b10-81d9c446-ef062f39-a7a39a30-96639ff5-7eb88e98-0952bb65-ead57dc1-c60467aa-4987a692-1f3fc83e-3a26f5ff-d950931b-0f8c2fe3-24b1ff77-25f77b01-20aa0f60-aba3fae0-bfc28fea" class="fc-cta-btn">
+    <a id="fc-cta-link" href="#" class="fc-cta-btn">
       Rejoindre le programme maintenant
     </a>
     <p class="fc-cta-sub">
@@ -320,5 +320,24 @@
 
 </div>
 
+<script>
+(function() {
+  var allowed = ['fc-1x', 'fc-3x', 'fc-4x', 'fc-5x', 'fc-6x'];
+  var params = new URLSearchParams(window.location.search);
+  var offre = params.get('offre');
+  var btn = document.getElementById('fc-cta-link');
+
+  if (offre && allowed.indexOf(offre) !== -1) {
+    btn.href = 'https://www.yakineouss.com/' + offre;
+  } else {
+    btn.href = '#';
+    btn.textContent = 'Lien non valide \u2014 contactez Yakine';
+    btn.style.background = '#b0b0b8';
+    btn.style.animation = 'none';
+    btn.style.cursor = 'default';
+    btn.addEventListener('click', function(e) { e.preventDefault(); });
+  }
+})();
+</script>
 </body>
 </html>
