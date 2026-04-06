@@ -392,18 +392,7 @@
 (function() {
   var btn = document.getElementById('fc-cta-link');
   var params = new URLSearchParams(window.location.search);
-  var lien = params.get('lien');
-
-  if (lien) {
-    btn.href = decodeURIComponent(lien);
-  } else {
-    btn.href = '#';
-    btn.textContent = 'Lien de paiement en attente \u2014 contactez Yakine';
-    btn.style.background = '#b0b0b8';
-    btn.style.animation = 'none';
-    btn.style.cursor = 'default';
-    btn.addEventListener('click', function(e) { e.preventDefault(); });
-  }
+  btn.href = 'https://www.yakineouss.com/templateonboarding1euro-22008402';
 })();
 </script>
 </body>
