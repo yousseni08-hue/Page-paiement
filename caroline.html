@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Caroline — Ton recap de session avec Yakine</title>
+  <title>Caroline — Ton récap de session avec Yakine</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <style>
@@ -81,7 +81,7 @@
       border-radius: 18px;
       box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.03);
       padding: 28px 28px;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .fc-card:hover {
@@ -106,77 +106,74 @@
     .fc-message-text {
       font-size: 14.5px;
       color: #3a3a4a;
-      line-height: 1.75;
+      line-height: 1.8;
       margin-bottom: 0;
     }
     .fc-message-text p {
-      margin-bottom: 14px;
+      margin-bottom: 16px;
     }
     .fc-message-text p:last-child {
       margin-bottom: 0;
     }
-    .fc-prenom {
-      font-weight: 700;
-      color: #C9A96E;
-    }
 
-    /* ===== RECAP LISTE ===== */
-    .fc-recap {
+    /* ===== RECAP & ACTIONS LISTES ===== */
+    .fc-recap, .fc-actions, .fc-pdf {
       animation: fadeInUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
     }
-    .fc-recap-list {
+    .fc-actions {
+      animation-delay: 0.2s;
+    }
+    .fc-pdf {
+      animation-delay: 0.25s;
+    }
+    .fc-list {
       list-style: none;
     }
-    .fc-recap-list li {
+    .fc-list li {
       display: flex;
       align-items: flex-start;
       gap: 12px;
       font-size: 14.5px;
       color: #3a3a4a;
-      line-height: 1.65;
-      padding: 8px 0;
+      line-height: 1.7;
+      padding: 10px 0;
+      border-bottom: 1px solid #f4f2fa;
       transition: transform 0.2s ease;
     }
-    .fc-recap-list li:hover {
+    .fc-list li:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .fc-list li:first-child {
+      padding-top: 0;
+    }
+    .fc-list li:hover {
       transform: translateX(4px);
     }
-    .fc-recap-list li .fc-bullet {
+    .fc-list li .fc-bullet {
       color: #C9A96E;
       font-size: 13px;
       flex-shrink: 0;
-      margin-top: 3px;
+      margin-top: 4px;
     }
-
-    /* ===== PDF ===== */
-    .fc-pdf {
-      animation: fadeInUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
-    }
-    .fc-pdf-list {
-      list-style: none;
-    }
-    .fc-pdf-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      font-size: 14.5px;
-      color: #3a3a4a;
-      line-height: 1.65;
-      padding: 8px 0;
-      transition: transform 0.2s ease;
-    }
-    .fc-pdf-list li:hover {
-      transform: translateX(4px);
-    }
-    .fc-pdf-list li .fc-bullet {
+    .fc-list li .fc-bullet-action {
       font-size: 15px;
       flex-shrink: 0;
-      margin-top: 1px;
+      margin-top: 2px;
+    }
+    .fc-list li .fc-bullet-pdf {
+      font-size: 15px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .fc-list li strong {
+      color: #1a1a2e;
     }
 
     /* ===== BOUTON CTA ===== */
     .fc-cta-wrapper {
-      margin: 32px 0 14px;
-      animation: fadeInUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
+      margin: 36px 0 16px;
+      animation: fadeInUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.35s both;
     }
     .fc-cta-btn {
       display: block;
@@ -231,7 +228,7 @@
       border-radius: 14px;
       padding: 24px 24px;
       margin-top: 8px;
-      animation: fadeInUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.4s both;
+      animation: fadeInUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.45s both;
     }
     .fc-reassurance-item {
       display: flex;
@@ -295,8 +292,7 @@
       .fc-logo-text { font-size: 23px; letter-spacing: 0.1em; }
       .fc-subtitle { font-size: 13.5px; }
       .fc-cta-btn { font-size: 14.5px; padding: 16px 24px; }
-      .fc-recap-list li { font-size: 13.5px; }
-      .fc-pdf-list li { font-size: 13.5px; }
+      .fc-list li { font-size: 13.5px; }
       .fc-message-text { font-size: 13.5px; }
       .fc-reassurance-item { font-size: 12.5px; }
     }
@@ -319,55 +315,117 @@
     <p class="fc-subtitle">Session de conseil personnalisée avec Yakine</p>
   </div>
 
-  <!-- MESSAGE PERSONNALISE -->
+  <!-- MESSAGE PERSONNALISÉ -->
   <div class="fc-card fc-message">
     <div class="fc-section-title">Pour toi, Caroline</div>
     <div class="fc-message-text">
-      <p>Merci pour cet appel, c'etait vraiment un bel echange. On a passe 1h34 ensemble et honnetement, ca se voit que tu as fait un travail enorme sur toi.</p>
-      <p>Ce qui m'a frappe chez toi, c'est que tu as deja toutes les armes. Tu comprends tes schemas, tu connais tes blessures, tu sais ce que tu veux dans une relation : du respect, de la loyaute, de la communication, un homme ancre qui n'a pas peur de construire. Et tu as eleve 3 enfants incroyables en leur donnant exactement ce que toi tu n'as pas recu. C'est une force immense.</p>
-      <p>Mais on a identifie ensemble le point precis qui te manquait, et c'est la bonne nouvelle : c'est pas un probleme de fond, c'est un probleme de <strong>timing dans ton filtre</strong>.</p>
+      <p>Merci pour cet échange, c'était vraiment un bel appel. On a passé 1h34 ensemble et honnêtement, ça se voit que tu as fait un travail énorme sur toi-même.</p>
+      <p>Ce qui m'a frappé chez toi, c'est que tu as déjà toutes les armes. Tu comprends tes schémas, tu connais tes blessures, tu sais exactement ce que tu veux dans une relation : du respect, de la loyauté, de la communication, un homme ancré qui n'a pas peur de construire. Et surtout, tu as élevé 3 enfants incroyables en leur donnant exactement ce que toi tu n'as pas reçu — c'est une force immense.</p>
+      <p>Mais on a identifié ensemble le point précis qui te manquait, et c'est la bonne nouvelle : c'est pas un problème de fond, c'est un problème de <strong>timing dans ton filtre</strong>. Tu savais quoi faire, mais tu le faisais trop tard — une fois déjà attachée.</p>
     </div>
   </div>
 
-  <!-- RECAP DE LA SESSION -->
+  <!-- RÉCAP DE LA SESSION -->
   <div class="fc-card fc-recap">
     <div class="fc-section-title">Ce qu'on a vu ensemble</div>
-    <ul class="fc-recap-list">
-      <li><span class="fc-bullet">✦</span> <strong>Ton schema repetitif</strong> — Tu as conscience de tes patterns (permissivite, role du sauveur, tolerer le mepris), mais malgre cette conscience, le schema se repetait parce que tu ne filtrais pas avant de t'attacher.</li>
-      <li><span class="fc-bullet">✦</span> <strong>Le vrai probleme</strong> — Ce n'est pas un manque de valeurs ou de connaissance de toi. C'est que tu t'attachais trop vite (notamment via la sexualite) avant d'avoir verifie que l'homme en face etait aligne avec ce que tu cherches.</li>
-      <li><span class="fc-bullet">✦</span> <strong>La regle du premier date</strong> — Arriver neutre, sans attente. Poser les vraies questions des le debut : "Qu'est-ce que tu recherches ?" Si sa reponse n'est pas claire et categorique ("je veux une relation serieuse"), c'est au revoir.</li>
-      <li><span class="fc-bullet">✦</span> <strong>La regle des 30 jours</strong> — Pas de sexualite pendant 30 jours. Observer sa coherence, sa patience, sa transparence. S'il reste, qu'il date en journee dans des endroits publics, qu'il met aucune pression : c'est bon signe.</li>
-      <li><span class="fc-bullet">✦</span> <strong>Etre intransigeante</strong> — Un seul critere qui ne va pas = au revoir. Meme s'il est beau. Le potentiel n'existe pas tant qu'il n'a pas ete demontre par les actes.</li>
-      <li><span class="fc-bullet">✦</span> <strong>Bloquer l'ex</strong> — Hicham a crame toutes ses chances. Le bloquer partout, ne pas aller recuperer tes affaires, zero explication. Il va revenir avec du miel, c'est biologique, et c'est un piege.</li>
-      <li><span class="fc-bullet">✦</span> <strong>Ou rencontrer</strong> — Clubs de sport, cours de danse de salon, beaux cafes parisiens. Se faire aborder par des hommes courageux dans des lieux de qualite. Plus jamais au travail, plus jamais sur les applis.</li>
+    <ul class="fc-list">
+      <li>
+        <span class="fc-bullet">✦</span>
+        <div><strong>Ton schéma répétitif identifié</strong> — Tu as une conscience claire de tes patterns : la permissivité, le rôle du sauveur, tolérer le mépris et l'humiliation par loyauté. Malgré cette conscience et tout le travail thérapeutique, le schéma se répétait pour une raison simple : tu ne filtrais pas les hommes <em>avant</em> de t'attacher à eux.</div>
+      </li>
+      <li>
+        <span class="fc-bullet">✦</span>
+        <div><strong>La dissonance entre savoir et agir</strong> — Tu as la bonne structure de pensée, les bonnes valeurs, les bonnes interrogations. Mais dès que l'attachement émotionnel et physique s'installait (via la sexualité, l'ocytocine, la proximité), tout ce que tu savais était mis sous silence. L'espoir que l'autre change prenait le dessus.</div>
+      </li>
+      <li>
+        <span class="fc-bullet">✦</span>
+        <div><strong>La solution : filtrer avant de s'attacher</strong> — Tout se joue au premier date. Arriver neutre, sans attente. Poser la question claire : « Qu'est-ce que tu recherches ? » Si sa réponse n'est pas catégorique — « je veux une relation sérieuse » — c'est terminé. Pas de « on verra », pas de « je sais pas encore ». Catégorique.</div>
+      </li>
+      <li>
+        <span class="fc-bullet">✦</span>
+        <div><strong>La règle des 30 jours</strong> — Zéro sexualité pendant 30 jours, même s'il te plaît énormément. Observer sa cohérence, sa patience, sa transparence. Est-ce qu'il date en journée, dans des endroits publics ? Est-ce qu'il met aucune pression ? Est-ce qu'il reste constant dans ce qu'il dit et ce qu'il fait ? C'est là que tu vois la vérité.</div>
+      </li>
+      <li>
+        <span class="fc-bullet">✦</span>
+        <div><strong>L'intransigeance comme protection</strong> — Un seul critère qui ne va pas = au revoir. Même s'il est beau. Le potentiel n'existe pas tant qu'il n'a pas été démontré par les actes. L'analogie de la boulangerie : tu viens acheter du pain, tu ne viens pas pour « voir si peut-être tu voulais du pain ». Pareil en relation.</div>
+      </li>
+      <li>
+        <span class="fc-bullet">✦</span>
+        <div><strong>Vérifier sa vie, pas juste ses mots</strong> — Les hommes mentent, c'est une réalité. Donc stalker sa vie : ses réseaux sociaux, est-ce qu'il est vraiment célibataire, est-ce qu'il a un travail stable. Observer comment il parle de ses ex — s'il en parle mal, c'est un red flag absolu. Observer s'il a du recul sur lui-même et ses propres patterns.</div>
+      </li>
+      <li>
+        <span class="fc-bullet">✦</span>
+        <div><strong>Le love bombing = red flag</strong> — Si dès le premier date il te promet monts et merveilles, te donne des surnoms, t'emmène dans sa maison de campagne : couper. Ce n'est pas de l'amour, c'est de la manipulation. Tu l'as vécu avec le militaire et tu as bien réagi — reproduis ça systématiquement.</div>
+      </li>
+      <li>
+        <span class="fc-bullet">✦</span>
+        <div><strong>Le pouvoir biologique de la sexualité</strong> — Quand tu couches avec quelqu'un, ton cerveau libère de l'ocytocine et des hormones d'attachement. C'est physiologique, pas émotionnel. Ça te rend attachée même à quelqu'un qui ne te convient pas. C'est exactement ce qui s'est passé avec Hicham. Garder le pouvoir sexuel, c'est garder ta lucidité.</div>
+      </li>
     </ul>
   </div>
 
-  <!-- PDF ENVOYES -->
+  <!-- PLAN D'ACTION -->
+  <div class="fc-card fc-actions">
+    <div class="fc-section-title">Tes actions concrètes maintenant</div>
+    <ul class="fc-list">
+      <li>
+        <span class="fc-bullet-action">🚫</span>
+        <div><strong>Bloquer Hicham partout</strong> — Téléphone, réseaux sociaux, tout. Il a cramé toutes ses chances. Il va revenir avec du miel, c'est certain — c'est biologique. Ne pas aller récupérer tes affaires, mets une croix dessus. Zéro explication, il n'en mérite pas. Minimum 1 an sans aucun contact pour que le reset hormonal se fasse.</div>
+      </li>
+      <li>
+        <span class="fc-bullet-action">⏸️</span>
+        <div><strong>Te mettre en pause relationnelle</strong> — Pas de dates pour le moment. Sport, toi, tes enfants. Prendre le temps de digérer et de te recentrer. Tu l'as dit toi-même : c'est ta priorité là, maintenant.</div>
+      </li>
+      <li>
+        <span class="fc-bullet-action">📍</span>
+        <div><strong>Changer tes lieux de rencontre</strong> — Plus jamais au travail, plus jamais sur les applis. S'inscrire à un cours de danse de salon, changer de salle de sport, faire la tournée des beaux cafés parisiens avec un bouquin. Se faire aborder par des hommes qui ont le courage de venir te parler en public — c'est déjà une preuve de sérieux.</div>
+      </li>
+      <li>
+        <span class="fc-bullet-action">🎯</span>
+        <div><strong>Appliquer le protocole du premier date</strong> — Toujours en extérieur, en journée, dans un lieu public. Poser les vraies questions dès le début. Être légère mais analytique. Observer ses habitudes : est-ce qu'il fume, est-ce qu'il boit, est-ce qu'il prend soin de lui, est-ce qu'il se cultive. Un critère qui ne va pas = au revoir, même s'il est beau.</div>
+      </li>
+      <li>
+        <span class="fc-bullet-action">⏳</span>
+        <div><strong>Tenir les 30 jours sans sexualité</strong> — S'il est vraiment là pour du sérieux, 30 jours ne le feront pas fuir. S'il part, tu as ta réponse. Et toi, tu gardes ta lucidité intacte.</div>
+      </li>
+      <li>
+        <span class="fc-bullet-action">👑</span>
+        <div><strong>Dater à la hauteur de ta grandeur</strong> — Tu as 49 ans, tu as traversé des épreuves, tu as élevé 3 enfants magnifiques, tu as repris des études, décroché un master et un CDI. Ce n'est pas le premier lascar venu qui va pouvoir te sortir de tes standards. Sois fière de chaque date où tu auras dit non au bon moment.</div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- PDF ENVOYÉS -->
   <div class="fc-card fc-pdf">
-    <div class="fc-section-title">Tes ressources envoyees sur WhatsApp</div>
-    <ul class="fc-pdf-list">
-      <li><span class="fc-bullet">📕</span> <strong>Base Femme Choisie</strong> — Les fondations pour se positionner comme une femme qui choisit et qui se fait choisir.</li>
-      <li><span class="fc-bullet">📘</span> <strong>Comprendre le timing dans les relations</strong> — Le guide pour ne plus se precipiter et respecter le bon rythme dans les etapes d'une relation.</li>
+    <div class="fc-section-title">Tes ressources envoyées sur WhatsApp</div>
+    <ul class="fc-list">
+      <li>
+        <span class="fc-bullet-pdf">📕</span>
+        <div><strong>Base Femme Choisie</strong> — Les fondations pour se positionner comme une femme qui choisit et qui se fait choisir.</div>
+      </li>
+      <li>
+        <span class="fc-bullet-pdf">📘</span>
+        <div><strong>Comprendre le timing dans les relations</strong> — Le guide pour ne plus se précipiter et respecter le bon rythme dans chaque étape d'une relation.</div>
+      </li>
     </ul>
   </div>
 
   <!-- BOUTON CTA -->
   <div class="fc-cta-wrapper">
-    <a id="fc-cta-link" href="#" class="fc-cta-btn">
+    <a id="fc-cta-link" href="https://www.yakineouss.com/templateonboarding1euro-22008402" class="fc-cta-btn">
       Payer la session de conseil avec Yakine
     </a>
     <p class="fc-cta-sub">
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#a0a4b0" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-      Paiement securise · Facture envoyee par email
+      Paiement sécurisé · Facture envoyée par email
     </p>
   </div>
 
   <!-- REASSURANCE -->
   <div class="fc-reassurance">
-    <div class="fc-reassurance-item"><span class="fc-icon">🔒</span> Paiement 100% securise — Chiffrement SSL 256 bits</div>
-    <div class="fc-reassurance-item"><span class="fc-icon">🛡️</span> Vos donnees sont confidentielles — Jamais partagees</div>
-    <div class="fc-reassurance-item"><span class="fc-icon">📄</span> Facture envoyee instantanement par email</div>
+    <div class="fc-reassurance-item"><span class="fc-icon">🔒</span> Paiement 100% sécurisé — Chiffrement SSL 256 bits</div>
+    <div class="fc-reassurance-item"><span class="fc-icon">🛡️</span> Vos données sont confidentielles — Jamais partagées</div>
+    <div class="fc-reassurance-item"><span class="fc-icon">📄</span> Facture envoyée instantanément par email</div>
     <div class="fc-reassurance-item"><span class="fc-icon">💬</span> Yakine reste disponible sur WhatsApp pour le suivi</div>
   </div>
 
@@ -383,17 +441,10 @@
   <div class="fc-footer">
     FEMME-CHOISIE™ · Session de conseil par Yakine<br>
     <a href="mailto:contact@yakineouss.com">contact@yakineouss.com</a><br>
-    © 2026 — Tous droits reserves
+    © 2026 — Tous droits réservés
   </div>
 
 </div>
 
-<script>
-(function() {
-  var btn = document.getElementById('fc-cta-link');
-  var params = new URLSearchParams(window.location.search);
-  btn.href = 'https://www.yakineouss.com/templateonboarding1euro-22008402';
-})();
-</script>
 </body>
 </html>
