@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Caroline — Ton recap de session avec Yakine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Nunito Sans', sans-serif;
+      background: linear-gradient(180deg, #FAF8FF 0%, #F3EEFF 50%, #FAF8FF 100%);
+      color: #1a1a2e;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulseBtn {
+      0%, 100% { box-shadow: 0 8px 24px rgba(254, 100, 34, 0.35); }
+      50% { box-shadow: 0 14px 40px rgba(254, 100, 34, 0.55); }
+    }
+    @keyframes glowLine {
+      0%, 100% { opacity: 0.6; width: 60px; }
+      50% { opacity: 1; width: 90px; }
+    }
+
+    /* ===== CONTAINER ===== */
+    .fc-page {
+      max-width: 560px;
+      margin: 0 auto;
+      padding: 52px 24px 64px;
+    }
+
+    /* ===== HEADER / BRANDING ===== */
+    .fc-header {
+      text-align: center;
+      margin-bottom: 40px;
+      animation: fadeInUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+    .fc-logo-text {
+      font-weight: 800;
+      font-size: 30px;
+      letter-spacing: 0.14em;
+      color: #1a1a2e;
+      text-transform: uppercase;
+    }
+    .fc-logo-text span {
+      color: #C9A96E;
+    }
+    .fc-header-line {
+      height: 2.5px;
+      background: linear-gradient(90deg, transparent, #C9A96E, transparent);
+      border-radius: 2px;
+      margin: 16px auto 0;
+      animation: glowLine 3s ease-in-out infinite;
+    }
+    .fc-subtitle {
+      font-size: 14.5px;
+      font-weight: 400;
+      color: #6a6a7a;
+      margin-top: 16px;
+      letter-spacing: 0.01em;
+      line-height: 1.6;
+    }
+
+    /* ===== CARDS ===== */
+    .fc-card {
+      background: #ffffff;
+      border-radius: 18px;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.03);
+      padding: 28px 28px;
+      margin-bottom: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .fc-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 36px rgba(0, 0, 0, 0.07), 0 2px 6px rgba(0, 0, 0, 0.04);
+    }
+
+    /* ===== SECTION TITLE ===== */
+    .fc-section-title {
+      font-weight: 800;
+      font-size: 11.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #C9A96E;
+      margin-bottom: 18px;
+    }
+
+    /* ===== MESSAGE PERSO ===== */
+    .fc-message {
+      animation: fadeInUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.05s both;
+    }
+    .fc-message-text {
+      font-size: 14.5px;
+      color: #3a3a4a;
+      line-height: 1.75;
+      margin-bottom: 0;
+    }
+    .fc-message-text p {
+      margin-bottom: 14px;
+    }
+    .fc-message-text p:last-child {
+      margin-bottom: 0;
+    }
+    .fc-prenom {
+      font-weight: 700;
+      color: #C9A96E;
+    }
+
+    /* ===== RECAP LISTE ===== */
+    .fc-recap {
+      animation: fadeInUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+    }
+    .fc-recap-list {
+      list-style: none;
+    }
+    .fc-recap-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14.5px;
+      color: #3a3a4a;
+      line-height: 1.65;
+      padding: 8px 0;
+      transition: transform 0.2s ease;
+    }
+    .fc-recap-list li:hover {
+      transform: translateX(4px);
+    }
+    .fc-recap-list li .fc-bullet {
+      color: #C9A96E;
+      font-size: 13px;
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    /* ===== PDF ===== */
+    .fc-pdf {
+      animation: fadeInUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+    }
+    .fc-pdf-list {
+      list-style: none;
+    }
+    .fc-pdf-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14.5px;
+      color: #3a3a4a;
+      line-height: 1.65;
+      padding: 8px 0;
+      transition: transform 0.2s ease;
+    }
+    .fc-pdf-list li:hover {
+      transform: translateX(4px);
+    }
+    .fc-pdf-list li .fc-bullet {
+      font-size: 15px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ===== BOUTON CTA ===== */
+    .fc-cta-wrapper {
+      margin: 32px 0 14px;
+      animation: fadeInUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
+    }
+    .fc-cta-btn {
+      display: block;
+      width: 100%;
+      background: linear-gradient(135deg, #FE6422, #FF8C00);
+      border: none;
+      border-radius: 50px;
+      font-family: 'Nunito Sans', sans-serif;
+      font-weight: 800;
+      font-size: 16px;
+      letter-spacing: 0.04em;
+      color: #ffffff;
+      padding: 18px 32px;
+      cursor: pointer;
+      text-transform: uppercase;
+      text-align: center;
+      text-decoration: none;
+      transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
+      animation: pulseBtn 2.5s ease-in-out infinite;
+      position: relative;
+      overflow: hidden;
+    }
+    .fc-cta-btn::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+      transition: left 0.5s ease;
+    }
+    .fc-cta-btn:hover::after {
+      left: 100%;
+    }
+    .fc-cta-btn:hover {
+      transform: scale(1.03);
+      box-shadow: 0 16px 44px rgba(254, 100, 34, 0.5);
+    }
+    .fc-cta-sub {
+      text-align: center;
+      font-size: 12px;
+      color: #a0a4b0;
+      margin-top: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    /* ===== REASSURANCE ===== */
+    .fc-reassurance {
+      background: linear-gradient(135deg, #F8F6FF 0%, #F0EDFA 100%);
+      border-radius: 14px;
+      padding: 24px 24px;
+      margin-top: 8px;
+      animation: fadeInUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.4s both;
+    }
+    .fc-reassurance-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13px;
+      color: #4a4a5a;
+      line-height: 1.6;
+      padding: 7px 0;
+      transition: transform 0.2s ease;
+    }
+    .fc-reassurance-item:hover {
+      transform: translateX(3px);
+    }
+    .fc-reassurance-item .fc-icon {
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    /* ===== PAYMENT LOGOS ===== */
+    .fc-payment-logos {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 28px;
+      opacity: 0.35;
+      animation: fadeInUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.5s both;
+      transition: opacity 0.3s ease;
+    }
+    .fc-payment-logos:hover {
+      opacity: 0.55;
+    }
+    .fc-payment-logos svg {
+      height: 24px;
+      width: auto;
+    }
+
+    /* ===== FOOTER ===== */
+    .fc-footer {
+      text-align: center;
+      margin-top: 36px;
+      font-size: 11.5px;
+      color: #b0b0b8;
+      line-height: 1.8;
+      animation: fadeInUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.55s both;
+    }
+    .fc-footer a {
+      color: #C9A96E;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .fc-footer a:hover {
+      color: #b8944f;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 640px) {
+      .fc-page { padding: 36px 16px 48px; }
+      .fc-card { padding: 22px 20px; border-radius: 14px; }
+      .fc-logo-text { font-size: 23px; letter-spacing: 0.1em; }
+      .fc-subtitle { font-size: 13.5px; }
+      .fc-cta-btn { font-size: 14.5px; padding: 16px 24px; }
+      .fc-recap-list li { font-size: 13.5px; }
+      .fc-pdf-list li { font-size: 13.5px; }
+      .fc-message-text { font-size: 13.5px; }
+      .fc-reassurance-item { font-size: 12.5px; }
+    }
+
+    @media (max-width: 380px) {
+      .fc-page { padding: 28px 12px 40px; }
+      .fc-card { padding: 18px 16px; }
+      .fc-logo-text { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="fc-page">
+
+  <!-- HEADER -->
+  <div class="fc-header">
+    <div class="fc-logo-text">FEMME<span>-</span>CHOISIE<span>™</span></div>
+    <div class="fc-header-line"></div>
+    <p class="fc-subtitle">Session de conseil personnalisée avec Yakine</p>
+  </div>
+
+  <!-- MESSAGE PERSONNALISE -->
+  <div class="fc-card fc-message">
+    <div class="fc-section-title">Pour toi, Caroline</div>
+    <div class="fc-message-text">
+      <p>Merci pour cet appel, c'etait vraiment un bel echange. On a passe 1h34 ensemble et honnetement, ca se voit que tu as fait un travail enorme sur toi.</p>
+      <p>Ce qui m'a frappe chez toi, c'est que tu as deja toutes les armes. Tu comprends tes schemas, tu connais tes blessures, tu sais ce que tu veux dans une relation : du respect, de la loyaute, de la communication, un homme ancre qui n'a pas peur de construire. Et tu as eleve 3 enfants incroyables en leur donnant exactement ce que toi tu n'as pas recu. C'est une force immense.</p>
+      <p>Mais on a identifie ensemble le point precis qui te manquait, et c'est la bonne nouvelle : c'est pas un probleme de fond, c'est un probleme de <strong>timing dans ton filtre</strong>.</p>
+    </div>
+  </div>
+
+  <!-- RECAP DE LA SESSION -->
+  <div class="fc-card fc-recap">
+    <div class="fc-section-title">Ce qu'on a vu ensemble</div>
+    <ul class="fc-recap-list">
+      <li><span class="fc-bullet">✦</span> <strong>Ton schema repetitif</strong> — Tu as conscience de tes patterns (permissivite, role du sauveur, tolerer le mepris), mais malgre cette conscience, le schema se repetait parce que tu ne filtrais pas avant de t'attacher.</li>
+      <li><span class="fc-bullet">✦</span> <strong>Le vrai probleme</strong> — Ce n'est pas un manque de valeurs ou de connaissance de toi. C'est que tu t'attachais trop vite (notamment via la sexualite) avant d'avoir verifie que l'homme en face etait aligne avec ce que tu cherches.</li>
+      <li><span class="fc-bullet">✦</span> <strong>La regle du premier date</strong> — Arriver neutre, sans attente. Poser les vraies questions des le debut : "Qu'est-ce que tu recherches ?" Si sa reponse n'est pas claire et categorique ("je veux une relation serieuse"), c'est au revoir.</li>
+      <li><span class="fc-bullet">✦</span> <strong>La regle des 30 jours</strong> — Pas de sexualite pendant 30 jours. Observer sa coherence, sa patience, sa transparence. S'il reste, qu'il date en journee dans des endroits publics, qu'il met aucune pression : c'est bon signe.</li>
+      <li><span class="fc-bullet">✦</span> <strong>Etre intransigeante</strong> — Un seul critere qui ne va pas = au revoir. Meme s'il est beau. Le potentiel n'existe pas tant qu'il n'a pas ete demontre par les actes.</li>
+      <li><span class="fc-bullet">✦</span> <strong>Bloquer l'ex</strong> — Hicham a crame toutes ses chances. Le bloquer partout, ne pas aller recuperer tes affaires, zero explication. Il va revenir avec du miel, c'est biologique, et c'est un piege.</li>
+      <li><span class="fc-bullet">✦</span> <strong>Ou rencontrer</strong> — Clubs de sport, cours de danse de salon, beaux cafes parisiens. Se faire aborder par des hommes courageux dans des lieux de qualite. Plus jamais au travail, plus jamais sur les applis.</li>
+    </ul>
+  </div>
+
+  <!-- PDF ENVOYES -->
+  <div class="fc-card fc-pdf">
+    <div class="fc-section-title">Tes ressources envoyees sur WhatsApp</div>
+    <ul class="fc-pdf-list">
+      <li><span class="fc-bullet">📕</span> <strong>Base Femme Choisie</strong> — Les fondations pour se positionner comme une femme qui choisit et qui se fait choisir.</li>
+      <li><span class="fc-bullet">📘</span> <strong>Comprendre le timing dans les relations</strong> — Le guide pour ne plus se precipiter et respecter le bon rythme dans les etapes d'une relation.</li>
+    </ul>
+  </div>
+
+  <!-- BOUTON CTA -->
+  <div class="fc-cta-wrapper">
+    <a id="fc-cta-link" href="#" class="fc-cta-btn">
+      Payer la session de conseil avec Yakine
+    </a>
+    <p class="fc-cta-sub">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#a0a4b0" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      Paiement securise · Facture envoyee par email
+    </p>
+  </div>
+
+  <!-- REASSURANCE -->
+  <div class="fc-reassurance">
+    <div class="fc-reassurance-item"><span class="fc-icon">🔒</span> Paiement 100% securise — Chiffrement SSL 256 bits</div>
+    <div class="fc-reassurance-item"><span class="fc-icon">🛡️</span> Vos donnees sont confidentielles — Jamais partagees</div>
+    <div class="fc-reassurance-item"><span class="fc-icon">📄</span> Facture envoyee instantanement par email</div>
+    <div class="fc-reassurance-item"><span class="fc-icon">💬</span> Yakine reste disponible sur WhatsApp pour le suivi</div>
+  </div>
+
+  <!-- LOGOS PAIEMENT -->
+  <div class="fc-payment-logos">
+    <svg viewBox="0 0 48 32" fill="none"><rect width="48" height="32" rx="4" fill="#F0F0F0"/><path d="M19.5 21h-3.3l2.1-12.8h3.3L19.5 21zm13.4-12.5c-.7-.3-1.7-.5-3-.5-3.3 0-5.6 1.7-5.6 4.2 0 1.8 1.7 2.8 2.9 3.4 1.3.6 1.7 1 1.7 1.6 0 .8-1 1.2-2 1.2-1.3 0-2-.2-3.1-.7l-.4-.2-.5 2.8c.8.3 2.2.6 3.6.6 3.5 0 5.7-1.7 5.8-4.3 0-1.4-.9-2.5-2.8-3.4-1.2-.6-1.9-1-1.9-1.6 0-.5.6-1.1 1.9-1.1 1.1 0 1.9.2 2.5.5l.3.1.5-2.6z" fill="#8B8B8B"/><path d="M37.6 8.2h-2.6c-.8 0-1.4.2-1.7 1L29 21h3.5l.7-1.9h4.2l.4 1.9H41L38.5 8.2h-.9zm-3.2 9.3l1.3-3.5.6-1.5.3 1.5.7 3.5h-2.9z" fill="#8B8B8B"/><path d="M14.6 8.2L11.3 17l-.4-1.8c-.6-2.1-2.6-4.4-4.9-5.5l3 11.2h3.5l5.2-12.8h-3.1z" fill="#8B8B8B"/><path d="M8.5 8.2H3.1l-.1.3c4.2 1 7 3.6 8.1 6.7L9.9 9.3c-.2-.8-.8-1-1.4-1.1z" fill="#8B8B8B"/></svg>
+    <svg viewBox="0 0 48 32" fill="none"><rect width="48" height="32" rx="4" fill="#F0F0F0"/><circle cx="19" cy="16" r="8" fill="#BDBDBD" opacity="0.6"/><circle cx="29" cy="16" r="8" fill="#9E9E9E" opacity="0.6"/></svg>
+    <svg viewBox="0 0 48 32" fill="none"><rect width="48" height="32" rx="4" fill="#F0F0F0"/><path d="M24 8c-4.4 0-8 3.6-8 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 13.5c-.8 0-1.5-.2-2.1-.6l.7-3.2h2.8l.7 3.2c-.6.4-1.3.6-2.1.6zm-3-4.5l-1.5-2.4c.4-1.7 1.6-3 3.2-3.5L22 14.8 21 17zm6 0l-1-2.2-1.3-3.7c1.6.5 2.8 1.8 3.2 3.5L27 17z" fill="#8B8B8B"/></svg>
+    <svg viewBox="0 0 48 32" fill="none"><rect width="48" height="32" rx="4" fill="#F0F0F0"/><text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#8B8B8B" font-weight="700">CB</text></svg>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="fc-footer">
+    FEMME-CHOISIE™ · Session de conseil par Yakine<br>
+    <a href="mailto:contact@yakineouss.com">contact@yakineouss.com</a><br>
+    © 2026 — Tous droits reserves
+  </div>
+
+</div>
+
+<script>
+(function() {
+  var btn = document.getElementById('fc-cta-link');
+  var params = new URLSearchParams(window.location.search);
+  var lien = params.get('lien');
+
+  if (lien) {
+    btn.href = decodeURIComponent(lien);
+  } else {
+    btn.href = '#';
+    btn.textContent = 'Lien de paiement en attente \u2014 contactez Yakine';
+    btn.style.background = '#b0b0b8';
+    btn.style.animation = 'none';
+    btn.style.cursor = 'default';
+    btn.addEventListener('click', function(e) { e.preventDefault(); });
+  }
+})();
+</script>
+</body>
+</html>
